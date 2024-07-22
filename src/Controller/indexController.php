@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 
 // on étant la classe AbstractController, qui nous permet de pouvoir nous servir
-// de plusieurs outils, comme : #[Route(...)]
+// de plusieurs outils
 class indexController extends AbstractController{
 
     // #[Route('...', ...)] permet de créer une route pour l'url
