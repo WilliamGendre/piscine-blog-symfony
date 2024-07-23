@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
+    <link rel="stylesheet" href=" ../public/css/style.css">
 </head>
 <body>
 <header>
@@ -18,9 +18,10 @@
     <div id="smallStarter"><img src="https://www.pokemontrash.com/images/news/1534957796657.png" alt="starter"></div>
     <nav>
         <ul>
-            <li><a href="{{ path('home') }}">Acceuil</a></li>
+            <li><a href="{{ path('home') }}">Accueil</a></li>
             <li><a href="{{ path('liste_pokemons') }}">Pokemons</a></li>
             <li><a href="{{ path('categorie_version') }}">Version</a></li>
+            <li><a href="{{ path('choice_pokemon') }}">Es-tu prêt?</a></li>
         </ul>
     </nav>
 </header>

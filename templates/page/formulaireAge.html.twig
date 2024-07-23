@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire Age{% endblock %}
+
+{% block content %}
+
+    <main>
+
+        <h2 class="choiseStarter">quel âge as-tu?</h2>
+        <section>
+            <form method="get">
+                <label for="">
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="number" name="age">
+                </label>
+
+                <input type="submit">
+            </form>
+        </section>
+    </main>
+    
+{% endblock %}

@@ -81,6 +81,16 @@ main{
     background-color: #c34747;
 }
 
+iframe{
+    width: 100%;
+}
+
+#videoAccueil{
+    padding: 2%;
+    width: 50%;
+    margin: auto;
+}
+
 section{
     display: flex;
     flex-wrap: wrap;
@@ -132,6 +142,17 @@ section article{
 
 .listePokemon h2:hover + p, .listePokemon p:hover{
     transform: translateY(-50px);
+}
+
+.choiseStarter{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 2%;
+    font-size: 50px;
+}
+
+form{
+    padding-bottom: 2%;
 }
 
 /* -------------Footer------------- */
