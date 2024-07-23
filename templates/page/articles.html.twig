@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<main>
+    <section>
+        {% for pokemon in pokemons %}
+            {% if pokemon.isPublished %}
+                <article>
+                    <h2>{{ pokemon.title }}</h2>
+                    <p>{{ pokemon.content }}</p>
+                    <div class="pokemon"><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
+                </article>
+            {% endif %}
+        {% endfor %}
+    </section>
+</main>
+</body>
+</html>
+
+{% endblock %}

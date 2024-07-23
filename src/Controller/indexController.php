@@ -20,6 +20,6 @@ class indexController extends AbstractController{
     #[Route('/', name: 'home')]
     public function testHome()
     {
-        var_dump('hello world');die;
+        return $this->render('page/index.html.twig');
     }
 }
