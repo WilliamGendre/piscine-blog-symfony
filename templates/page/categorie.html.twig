@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Liste des versions{% endblock %}
+
 {% block content %}
 
     <main>
         <section>
             {% for categorie in categories %}
-                <h2>{{ categorie }}</h2>
+                <article class="listeVersions">
+                    <h2>{{ categorie.title }}</h2>
+                    <div class="pokemon"><img src="{{ categorie.image }}" alt="{{ categorie.title }}"></div>
+                </article>
             {% endfor %}
         </section>
     </main>

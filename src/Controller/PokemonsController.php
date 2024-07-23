@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class articlesController extends AbstractController{
+class PokemonsController extends AbstractController{
 
 
-    #[Route('/articles', name: 'liste_articles')]
-    public function listeArticles()
+    #[Route('/pokemons', name: 'liste_pokemons')]
+    public function listePokemon()
     {
         $pokemons = [
             [
@@ -92,7 +92,13 @@ class articlesController extends AbstractController{
     public function version()
     {
         $categories = [
-            'Red', 'Green', 'Blue', 'Yellow', 'Gold', 'Silver', 'Crystal'
+            ['title' => 'Red', 'image' => 'https://www.cdiscount.com/pdt2/9/4/8/1/700x700/seb3701519702948/rw/pokemon-rouge-pour-gameboy-vf.jpg'],
+            ['title' => 'Green', 'image' => 'https://image.jeuxvideo.com/images-sm/jaquettes/00045091/jaquette-pokemon-version-verte-gameboy-g-boy-cover-avant-g-1338208078.jpg'],
+            ['title' => 'Blue', 'image' => 'https://www.historiquedesjeuxvideo.com/bdd/jeu/img/Gameboy/17.jpg'],
+            ['title' => 'Yellow', 'image' => 'https://i.jeuxactus.com/datas/jeux/p/o/pokemon-version-jaune/xl/pokemon-version-jaune-ja-56963223890b0.jpg'],
+            ['title' => 'Gold', 'image' => 'https://static.wixstatic.com/media/e4a832_91f6c10f6f0445ae983326c8083d6dd0~mv2.webp'],
+            ['title' => 'Silver', 'image' => 'https://media.senscritique.com/media/000017577785/0/pokemon_argent.png'],
+            ['title' => 'Crystal', 'image' => 'https://i.pinimg.com/originals/ea/d3/53/ead35393bff6a99319f4559fcdd34b3a.png']
         ];
 
         // ses 2 lignes sont raccourcie en une seule avec $this->>render
