@@ -7,4 +7,4 @@ import './bootstrap.js';
  */
 import './styles/app.css';
 
-console.log('This log comes from asset/app.js - welcome to AssetMapper! 🎉');
+console.log('This log comes from css/app.js - welcome to AssetMapper! 🎉');
