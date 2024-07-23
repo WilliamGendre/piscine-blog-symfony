@@ -20,6 +20,5 @@
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/asset-mapper ###
-/public/css/
-/assets/vendor/
+/assets/vendor
 ###< symfony/asset-mapper ###

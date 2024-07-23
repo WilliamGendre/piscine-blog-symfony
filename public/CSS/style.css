@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------Font family------------- */
+
+@font-face{
+    font-family: pokemon;
+    src: url("../pokemon/Pokemon_Solid.ttf");
+}
+
+header, main, footer{
+    font-family: pokemon;
+}
+
+/* -------------Header------------- */
+
+header{
+    background-color: #6dd46d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2%;
+}
+
+img{
+    width: 100%;
+}
+
+#head{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logoPokemon{
+    width: 20%;
+}
+
+.pokeballHead{
+    width: 5%;
+}
+
+#smallStarter{
+    width: 30%;
+    padding-bottom: 2%;
+}
+
+nav{
+    width: 100%;
+    padding: 1%;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+nav ul li a:hover{
+    color: red;
+    font-size: 25px;
+}
+
+/* -------------Main------------- */
+
+main{
+    background-color: #c34747;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section article{
+    height: 350px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    padding: 2%;
+}
+
+.listePokemon{
+    justify-content: space-between;
+}
+
+.listeVersions{
+    justify-content: space-around;
+}
+
+.pokemon{
+    width: 50%;
+}
+
+.listePokemon h2{
+    color: white;
+    background-color: black;
+    padding: 0 5% 2%;
+    border-radius: 20px;
+}
+
+.listePokemon p{
+    position: absolute;
+    transform: translateY(1000px);
+    transition: 0.5s;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 10%);
+    padding: 40%;
+    text-align: center;
+}
+
+.listePokemon h2:hover + p, .listePokemon p:hover{
+    transform: translateY(-50px);
+}
+
+/* -------------Footer------------- */
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2%;
+    background-color: #6565c3;
+}
+
+footer div{
+    width: 10%;
+}
