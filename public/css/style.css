@@ -130,18 +130,27 @@ section article{
     border-radius: 20px;
 }
 
+.listePokemon p a{
+    text-decoration: none;
+    color: black;
+}
+
 .listePokemon p{
     position: absolute;
     transform: translateY(1000px);
     transition: 0.5s;
     z-index: 1;
     background-color: rgba(255, 255, 255, 10%);
-    padding: 40%;
+    padding: 40% 90px;
     text-align: center;
 }
 
 .listePokemon h2:hover + p, .listePokemon p:hover{
     transform: translateY(-50px);
+}
+
+.listePokemon p a{
+    color: blue;
 }
 
 .choiseStarter{
@@ -176,6 +185,8 @@ form{
     margin: auto;
     transform: translateY(1000px);
     padding: 50% 5%;
+    transition: 0.5s;
+    z-index: 1;
 }
 
 .descriptionPokemon h2:hover + p, .descriptionPokemon p:hover{

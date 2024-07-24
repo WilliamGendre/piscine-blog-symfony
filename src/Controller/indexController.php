@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // on créer le chemin vers le fichier grâce au namespace
 namespace App\Controller;
 

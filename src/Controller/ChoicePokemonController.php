@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,8 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class ChoicePokemonController extends AbstractController
 {
     #[Route('/choicePokemon', name: 'choice_pokemon')]
-    public function ageLegalPokemon(){
-        $request = Request::createFromGlobals();
+    public function ageLegalPokemon(Request $request){
         $age = $request->query->get('age');
 
         if(!$request->query->has('age')){
