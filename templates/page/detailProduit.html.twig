@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+
+    <main>
+        <section id="descriptionPokemon">
+            <article class="descriptionPokemon">
+                <div><img src="{{ product.image }}" alt="{{ product.title }}"></div>
+                <h2>{{ product.title }}</h2>
+                <p>{{ product.price }}</p>
+            </article>
+        </section>
+    </main>
+
+{% endblock %}

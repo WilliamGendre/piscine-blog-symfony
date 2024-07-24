@@ -16,6 +16,8 @@ class PokemonsController extends AbstractController{
 
     private array $categories;
 
+    private array $products;
+
     function __construct()
     {
         $this->pokemons = [
@@ -111,6 +113,49 @@ class PokemonsController extends AbstractController{
             ['title' => 'Silver', 'image' => 'https://media.senscritique.com/media/000017577785/0/pokemon_argent.png'],
             ['title' => 'Crystal', 'image' => 'https://i.pinimg.com/originals/ea/d3/53/ead35393bff6a99319f4559fcdd34b3a.png']
         ];
+
+        $this->products = [
+            [
+                'id' => 1,
+                'title' => 'Pokéball',
+                'price' => 200,
+                'price_reduction' => 0,
+                'image' => 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
+                'categories' => ['objet', 'capture']
+            ],
+            [
+                'id' => 2,
+                'title' => 'Potion',
+                'price' => 300,
+                'price_reduction' => 0,
+                'image' => 'https://static.wikia.nocookie.net/pokemon-prisme/images/7/7a/Potion.png/revision/latest/thumbnail/width/360/height/360?cb=20220815092317&path-prefix=fr',
+                'categories' => ['objet', 'soin']
+            ],
+            [
+                'id' => 3,
+                'title' => 'Corde sortie',
+                'price' => 550,
+                'price_reduction' => 0,
+                'image' => 'https://www.media.pokekalos.fr/img/pokemon/objets/big/corde-sortie.png',
+                'categories' => ['objet', 'autre']
+            ],
+            [
+                'id' => 4,
+                'title' => 'Repousse',
+                'price' => 350,
+                'price_reduction' => 300,
+                'image' => 'https://static.wikia.nocookie.net/pokemon-prisme/images/d/d3/Repousse.png/revision/latest/thumbnail/width/360/height/360?cb=20220815092318&path-prefix=fr',
+                'categories' => ['objet', 'autre']
+            ],
+            [
+                'id' => 5,
+                'title' => 'Total soin',
+                'price' => 600,
+                'price_reduction' => 500,
+                'image' => 'https://www.media.pokekalos.fr/img/pokemon/objets/big/total-soin.png',
+                'categories' => ['objet', 'soin']
+            ],
+        ];
     }
 
     #[Route('/pokemons', name: 'liste_pokemons')]
@@ -129,12 +174,12 @@ class PokemonsController extends AbstractController{
         return new Response($html, 200);
     }
 
-    #[Route('pokemonPage', 'pokemon_id')]
-    public function pokemonBuyId(Request $request): Response{
+    #[Route('pokemonPage/{id}', 'pokemon_id')]
+    public function pokemonBuyId($id): Response{
 
         // Récupère toutes les super globals (ligne 1) pour récupérer l'id dans l'url (ligne 2)
         // $request = Request::createFromGlobals();
-        $id = $request->query->get('id');
+        // $id = $request->query->get('id');
 
         $pokemonFound = null;
 
@@ -145,6 +190,24 @@ class PokemonsController extends AbstractController{
         }
 
         return $this->render('page/pagePokemon.html.twig', ['pokemon' => $pokemonFound]);
+    }
+
+    #[Route('shop', 'shop_pokemon')]
+    public function shopPokemon(){
+        return $this->render('page/shopPokemon.html.twig', ['products' => $this->products]);
+    }
+
+    #[Route('productDetail/{id}', 'product_id')]
+    public function productBuyId($id){
+        $productFound = null;
+
+        foreach ($this->products as $product) {
+            if($product['id'] === (int)$id){
+                $productFound = $product;
+            }
+        }
+
+        return $this->render('page/detailProduit.html.twig', ['product' => $productFound]);
     }
 
 }
