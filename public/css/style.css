@@ -155,6 +155,33 @@ form{
     padding-bottom: 2%;
 }
 
+/* -------------pagePokemon------------- */
+
+.descriptionPokemon{
+    position: relative;
+    height: 450px;
+    justify-content: space-between;
+}
+
+.descriptionPokemon h2{
+    color: white;
+    background-color: black;
+    padding: 0 5% 2%;
+    border-radius: 20px;
+}
+
+.descriptionPokemon p{
+    background-color: rgba(255, 255, 255, 10%);
+    position: absolute;
+    margin: auto;
+    transform: translateY(1000px);
+    padding: 50% 5%;
+}
+
+.descriptionPokemon h2:hover + p, .descriptionPokemon p:hover{
+    transform: translateY(-50px);
+}
+
 /* -------------Footer------------- */
 
 footer{

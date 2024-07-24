@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -105,6 +106,98 @@ class PokemonsController extends AbstractController{
         $html = $this->renderView('page/categorie.html.twig', ['categories' => $categories]);
 
         return new Response($html, 200);
+    }
+
+    #[Route('pokemonPage', 'pokemon_id')]
+    public function pokemonBuyId(){
+
+        // Récupère toutes les super globals (ligne 1) pour récupérer l'id dans l'url (ligne 2)
+        $request = Request::createFromGlobals();
+        $id = $request->query->get('id');
+
+        $pokemons = [
+            [
+                'id' => 1,
+                'title' => 'Carapuce',
+                'content' => "Son dos durcit avec l'âge et devient une super carapace. Il peut cracher des jets d'écume.",
+                'image' => 'https://eternia.fr/public/media//rb/artworks/007.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 2,
+                'title' => 'Salamèche',
+                'content' => 'Il préfère les endroits chauds. En cas de pluie, de la vapeur se forme autour de sa queue.',
+                'image' => 'https://www.pokepedia.fr/images/0/0c/Salam%C3%A8che-RB.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 3,
+                'title' => 'Bulbizarre',
+                'content' => 'Il a une étrange graine plantée sur son dos. Elle grandit avec lui depuis la naissance.',
+                'image' => 'https://www.pokepedia.fr/images/thumb/d/de/Bulbizarre-RB.png/175px-Bulbizarre-RB.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 4,
+                'title' => 'Pikachu',
+                'content' => 'Quand plusieurs de ces POKéMON se réunissent, ils provoquent de gigantesques orages.',
+                'image' => 'https://www.pokepedia.fr/images/thumb/b/be/Pikachu-RB.png/175px-Pikachu-RB.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 5,
+                'title' => 'Rattata',
+                'content' => 'Sa morsure est très puissante. Petit et rapide, on en voit un peu partout.',
+                'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/019.png',
+                'isPublished' => false
+            ],
+            [
+                'id' => 6,
+                'title' => 'Roucool',
+                'content' => "Il est souvent vu dans les forêts. Il brasse l'air de ses ailes près du sol pour projeter du sable.",
+                'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/016.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 7,
+                'title' => 'Aspicot',
+                'content' => "Il se nourrit de feuilles dans les forêts. L'aiguillon sur son front est empoisonné.",
+                'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/013.png',
+                'isPublished' => false
+            ],
+            [
+                'id' => 8,
+                'title' => 'Nosferapti',
+                'content' => "Se déplace en colonie dans les endroits sombres. Il s'oriente grâce aux ultrasons.",
+                'image' => 'https://www.pokepedia.fr/images/thumb/3/3c/Nosferapti-RB.png/175px-Nosferapti-RB.png',
+                'isPublished' => false
+            ],
+            [
+                'id' => 9,
+                'title' => 'Mewtwo',
+                'content' => 'Il est le fruit de nombreuses expériences génétiques horribles et malsaines.',
+                'image' => 'https://www.pokepedia.fr/images/thumb/6/61/Mewtwo-RB.png/175px-Mewtwo-RB.png',
+                'isPublished' => true
+            ],
+            [
+                'id' => 10,
+                'title' => 'Ronflex',
+                'content' => 'Très paresseux, il ne fait que manger et dormir. Plus il est gros, plus il devient fainéant.',
+                'image' => 'https://www.pokepedia.fr/images/thumb/a/ac/Ronflex-RB.png/175px-Ronflex-RB.png',
+                'isPublished' => false
+            ]
+
+        ];
+
+        $pokemonFound = null;
+
+        foreach ($pokemons as $pokemon) {
+            if($pokemon['id'] == $id){
+                $pokemonFound = $pokemon;
+            }
+        }
+
+        return $this->render('page/pagePokemon.html.twig', ['pokemon' => $pokemonFound]);
     }
 
 }
