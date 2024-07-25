@@ -7,10 +7,10 @@
     <main>
         <section>
             {% for product in products %}
-                    <article class="listePokemon">
+                    <article class="listeProduit">
                         <div class="pokemon"><img src="{{ product.image }}" alt="{{ product.title }}"></div>
                         <h2>{{ product.title }}</h2>
-                        <p>{{ product.price }}<br><a href="{{ path('product_id', {id: product.id })}}">Voir le produit</a></p>
+                        <p>{{ product.price }} pokédollards<br><a href="{{ path('product_id', {id: product.id })}}">Voir le produit</a></p>
                     </article>
             {% endfor %}
         </section>

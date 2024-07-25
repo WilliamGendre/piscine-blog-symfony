@@ -193,6 +193,106 @@ form{
     transform: translateY(-50px);
 }
 
+/* -------------choicePokemon------------- */
+
+.typePokemon{
+    position: relative;
+    height: 450px;
+    justify-content: space-between;
+}
+
+.typePokemon h2{
+    color: white;
+    background-color: black;
+    padding: 0 5% 2%;
+    border-radius: 20px;
+}
+
+.typePokemon p{
+    background-color: rgba(255, 255, 255, 10%);
+    position: absolute;
+    margin: auto;
+    transform: translateY(1000px);
+    padding: 50% 5%;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.typePokemon h2:hover + p, .typePokemon p:hover{
+    transform: translateY(-110px);
+}
+
+.typePokemon p{
+    text-align: center;
+}
+
+.typePokemon p span{
+    background-color: black;
+    padding: 0 10%;
+    border-radius: 15px;
+}
+
+#type1{
+    color: blue;
+}
+
+#type2{
+    color: red;
+}
+
+#type3{
+    color: green;
+}
+
+/* -------------Shop Pokemon------------- */
+
+.listeProduit{
+    position: relative;
+    height: 450px;
+    justify-content: space-between;
+}
+
+.listeProduit p a{
+    text-decoration: none;
+}
+
+.listeProduit h2{
+    color: white;
+    background-color: black;
+    padding: 0 5% 2%;
+    border-radius: 20px;
+}
+
+.listeProduit p{
+    background-color: rgba(255, 255, 255, 10%);
+    position: absolute;
+    margin: auto;
+    transform: translateY(1000px);
+    padding: 50% 29%;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.listeProduit h2:hover + p, .listeProduit p:hover{
+    transform: translateY(-80px);
+}
+
+.listeProduit p{
+    text-align: center;
+    font-size: 20px;
+}
+
+.descriptionPokemon p{
+    text-align: center;
+}
+
+#productPokemon{
+    color: white;
+    background-color: darkblue;
+    padding: 0 10%;
+    border-radius: 20px;
+}
+
 /* -------------Footer------------- */
 
 footer{

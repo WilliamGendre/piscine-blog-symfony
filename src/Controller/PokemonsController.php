@@ -16,7 +16,6 @@ class PokemonsController extends AbstractController{
 
     private array $categories;
 
-    private array $products;
 
     function __construct()
     {
@@ -27,7 +26,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon eau',
                 'pokedex' => "Son dos durcit avec l'âge et devient une super carapace. Il peut cracher des jets d'écume.",
                 'image' => 'https://eternia.fr/public/media//rb/artworks/007.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>true
             ],
             [
                 'id' => 2,
@@ -35,7 +35,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon feu',
                 'pokedex' => 'Il préfère les endroits chauds. En cas de pluie, de la vapeur se forme autour de sa queue.',
                 'image' => 'https://www.pokepedia.fr/images/0/0c/Salam%C3%A8che-RB.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>true
             ],
             [
                 'id' => 3,
@@ -43,7 +44,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon plante',
                 'pokedex' => 'Il a une étrange graine plantée sur son dos. Elle grandit avec lui depuis la naissance.',
                 'image' => 'https://www.pokepedia.fr/images/thumb/d/de/Bulbizarre-RB.png/175px-Bulbizarre-RB.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>true
             ],
             [
                 'id' => 4,
@@ -51,7 +53,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon electrique',
                 'pokedex' => 'Quand plusieurs de ces POKéMON se réunissent, ils provoquent de gigantesques orages.',
                 'image' => 'https://www.pokepedia.fr/images/thumb/b/be/Pikachu-RB.png/175px-Pikachu-RB.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>false
             ],
             [
                 'id' => 5,
@@ -59,7 +62,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon normal',
                 'pokedex' => 'Sa morsure est très puissante. Petit et rapide, on en voit un peu partout.',
                 'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/019.png',
-                'isPublished' => false
+                'isPublished' => false,
+                'starter' =>false
             ],
             [
                 'id' => 6,
@@ -67,7 +71,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon vol',
                 'pokedex' => "Il est souvent vu dans les forêts. Il brasse l'air de ses ailes près du sol pour projeter du sable.",
                 'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/016.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>false
             ],
             [
                 'id' => 7,
@@ -75,7 +80,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon insecte',
                 'pokedex' => "Il se nourrit de feuilles dans les forêts. L'aiguillon sur son front est empoisonné.",
                 'image' => 'https://www.media.pokekalos.fr/img/pokemon/sugimori/1G/013.png',
-                'isPublished' => false
+                'isPublished' => false,
+                'starter' =>false
             ],
             [
                 'id' => 8,
@@ -83,7 +89,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon poison',
                 'pokedex' => "Se déplace en colonie dans les endroits sombres. Il s'oriente grâce aux ultrasons.",
                 'image' => 'https://www.pokepedia.fr/images/thumb/3/3c/Nosferapti-RB.png/175px-Nosferapti-RB.png',
-                'isPublished' => false
+                'isPublished' => false,
+                'starter' =>false
             ],
             [
                 'id' => 9,
@@ -91,7 +98,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon psy',
                 'pokedex' => 'Il est le fruit de nombreuses expériences génétiques horribles et malsaines.',
                 'image' => 'https://www.pokepedia.fr/images/thumb/6/61/Mewtwo-RB.png/175px-Mewtwo-RB.png',
-                'isPublished' => true
+                'isPublished' => true,
+                'starter' =>false
             ],
             [
                 'id' => 10,
@@ -99,7 +107,8 @@ class PokemonsController extends AbstractController{
                 'content' => 'Pokemon normal',
                 'pokedex' => 'Très paresseux, il ne fait que manger et dormir. Plus il est gros, plus il devient fainéant.',
                 'image' => 'https://www.pokepedia.fr/images/thumb/a/ac/Ronflex-RB.png/175px-Ronflex-RB.png',
-                'isPublished' => false
+                'isPublished' => false,
+                'starter' =>false
             ]
 
         ];
@@ -112,49 +121,6 @@ class PokemonsController extends AbstractController{
             ['title' => 'Gold', 'image' => 'https://static.wixstatic.com/media/e4a832_91f6c10f6f0445ae983326c8083d6dd0~mv2.webp'],
             ['title' => 'Silver', 'image' => 'https://media.senscritique.com/media/000017577785/0/pokemon_argent.png'],
             ['title' => 'Crystal', 'image' => 'https://i.pinimg.com/originals/ea/d3/53/ead35393bff6a99319f4559fcdd34b3a.png']
-        ];
-
-        $this->products = [
-            [
-                'id' => 1,
-                'title' => 'Pokéball',
-                'price' => 200,
-                'price_reduction' => 0,
-                'image' => 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
-                'categories' => ['objet', 'capture']
-            ],
-            [
-                'id' => 2,
-                'title' => 'Potion',
-                'price' => 300,
-                'price_reduction' => 0,
-                'image' => 'https://static.wikia.nocookie.net/pokemon-prisme/images/7/7a/Potion.png/revision/latest/thumbnail/width/360/height/360?cb=20220815092317&path-prefix=fr',
-                'categories' => ['objet', 'soin']
-            ],
-            [
-                'id' => 3,
-                'title' => 'Corde sortie',
-                'price' => 550,
-                'price_reduction' => 0,
-                'image' => 'https://www.media.pokekalos.fr/img/pokemon/objets/big/corde-sortie.png',
-                'categories' => ['objet', 'autre']
-            ],
-            [
-                'id' => 4,
-                'title' => 'Repousse',
-                'price' => 350,
-                'price_reduction' => 300,
-                'image' => 'https://static.wikia.nocookie.net/pokemon-prisme/images/d/d3/Repousse.png/revision/latest/thumbnail/width/360/height/360?cb=20220815092318&path-prefix=fr',
-                'categories' => ['objet', 'autre']
-            ],
-            [
-                'id' => 5,
-                'title' => 'Total soin',
-                'price' => 600,
-                'price_reduction' => 500,
-                'image' => 'https://www.media.pokekalos.fr/img/pokemon/objets/big/total-soin.png',
-                'categories' => ['objet', 'soin']
-            ],
         ];
     }
 
@@ -192,22 +158,20 @@ class PokemonsController extends AbstractController{
         return $this->render('page/pagePokemon.html.twig', ['pokemon' => $pokemonFound]);
     }
 
-    #[Route('shop', 'shop_pokemon')]
-    public function shopPokemon(){
-        return $this->render('page/shopPokemon.html.twig', ['products' => $this->products]);
-    }
+    #[Route('/choicePokemon', name: 'choice_pokemon')]
+    public function ageLegalPokemon(Request $request){
+        $age = $request->query->get('age');
 
-    #[Route('productDetail/{id}', 'product_id')]
-    public function productBuyId($id){
-        $productFound = null;
-
-        foreach ($this->products as $product) {
-            if($product['id'] === (int)$id){
-                $productFound = $product;
+        if(!$request->query->has('age')){
+            return $this->render('page/formulaireAge.html.twig');
+        } else{
+            if($age > 10){
+                return $this->render('page/choisePokemon.html.twig', ['pokemons' => $this->pokemons]);
+            }else{
+                return $this->render('page/getOut.html.twig', []);
             }
         }
 
-        return $this->render('page/detailProduit.html.twig', ['product' => $productFound]);
     }
 
 }

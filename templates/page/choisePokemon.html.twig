@@ -8,11 +8,13 @@
         <h2 class="choiseStarter">Choisis ton pokemon</h2>
         <section>
             {% for pokemon in pokemons %}
-                <article class="listePokemon">
+                {% if pokemon.starter %}
+                <article class="typePokemon">
                     <div class="pokemon"><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
                     <h2>{{ pokemon.title }}</h2>
-                    <p>{{ pokemon.content }}</p>
+                    <p>{{ pokemon.pokedex }}<br><br><span id="type{{ pokemon.id }}">{{ pokemon.content }}</span></p>
                 </article>
+                {% endif %}
             {% endfor %}
         </section>
     </main>
