@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -215,5 +216,20 @@ class PokemonsController extends AbstractController{
         }
 
         return $this->render('page/searchPokemon.html.twig', ['pokemons' => $pokemonFound]);
+    }
+
+    #[Route('pokemon/delete/{id}', 'delete_pokemon')]
+    public function deletePokemon(int $id, PokemonRepository $pokemonRepository, EntityManagerInterface $entityManager){
+        // Récupère un pokémon dans la base de données grâce à son id
+        $pokemon = $pokemonRepository->find($id);
+
+        // Prépare la suppression
+        $entityManager->remove($pokemon);
+        // Lance la (ou les) supression
+        $entityManager->flush();
+
+        // redirige vers une page grâce à "redirectToRoute"
+        // mettre entre paranthèse le nom de la route vers laquelle se rediriger
+        return $this->redirectToRoute('pokemon_bdd');
     }
 }

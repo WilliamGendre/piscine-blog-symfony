@@ -10,7 +10,8 @@
                     <article class="listePokemon">
                         <div class="pokemon"><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
                         <h2>{{ pokemon.title }}</h2>
-                        <p class="homePokemon">{{ pokemon.type }}<br><a href="{{ path('pokemon_bdd_id', {id: pokemon.id }) }}">Voir la fiche du pokemon</a></p>
+                        <p class="homePokemon">{{ pokemon.type }}<br><a href="{{ path('pokemon_bdd_id', {id: pokemon.id }) }}">Voir la fiche du pokemon</a><br><a
+                                    href="{{ path('delete_pokemon', {id:pokemon.id}) }}">Supprimer Pokémon</a></p>
                     </article>
             {% endfor %}
         </section>
