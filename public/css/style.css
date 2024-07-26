@@ -323,7 +323,7 @@ form{
 }
 
 .descriptionPokemonbdd h2:hover + p, .descriptionPokemonbdd p:hover{
-    transform: translateY(-50px);
+    transform: translateY(-80px);
 }
 
 #erreur404{

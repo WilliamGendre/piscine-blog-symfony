@@ -223,6 +223,12 @@ class PokemonsController extends AbstractController{
         // Récupère un pokémon dans la base de données grâce à son id
         $pokemon = $pokemonRepository->find($id);
 
+        if (!$pokemon){
+            $html = $this->renderView('page/404.html.twig');
+
+            return new Response($html, 404);
+        }
+
         // Prépare la suppression
         $entityManager->remove($pokemon);
         // Lance la (ou les) supression
@@ -231,5 +237,19 @@ class PokemonsController extends AbstractController{
         // redirige vers une page grâce à "redirectToRoute"
         // mettre entre paranthèse le nom de la route vers laquelle se rediriger
         return $this->redirectToRoute('pokemon_bdd');
+    }
+
+    #[Route('insert-one-pokemon', name: 'insert_pokemon')]
+    public function insertPokemon(EntityManagerInterface $entityManager){
+        $pokemon = new Pokemon(
+            'tygnon',
+            "Il distribue des séries de coups de poing rapides comme l'éclair, invisibles à l'oeil nu.",
+            'https://www.pokepedia.fr/images/thumb/d/dc/Tygnon-RB.png/175px-Tygnon-RB.png',
+            'combat'
+        );
+
+        $entityManager->persist($pokemon);
+        $entityManager->flush();
+        return $this->redirectToRoute('pokemon_bdd', ['pokemon' => $pokemon]);
     }
 }
