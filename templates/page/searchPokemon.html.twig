@@ -7,13 +7,13 @@
     <main>
         <section id="descriptionPokemon">
 
-            {% if pokemon %}
+            {% for pokemon in pokemons %}
                 <article class="descriptionPokemonbdd">
                     <div><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
                     <h2>{{ pokemon.title }}</h2>
                     <p>{{ pokemon.description }}</p>
                 </article>
-            {% endif %}
+            {% endfor %}
 
         </section>
         <h2 class="choiseStarter">Entrer le nom du Pokemon</h2>

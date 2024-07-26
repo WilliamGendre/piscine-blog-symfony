@@ -193,20 +193,27 @@ class PokemonsController extends AbstractController{
     #[Route('/search_pokemon', 'search_pokemon')]
     public function searchPokemon(Request $request,PokemonRepository $pokemonRepository)
     {
-        $pokemonFound = null;
 
+        // on défini $pokemonFound: on lui donne comme valeur un tableau vide
+        // car on va lui retourner un tableau
+        $pokemonFound = [];
+
+        // on regarde si on à lancé une recherche avec le "has"
         if ($request->request->has('title')){
+            // on récupère la recherche
             $searchTitle = $request->request->get('title');
-            //dump($searchTitle); die;
-            $pokemonFound = $pokemonRepository->findOneBy(['title' => $searchTitle]);
+            // on comparer avec la Bdd
+            $pokemonFound = $pokemonRepository->findLikeTitle($searchTitle);
 
-            if(!$pokemonFound){
+            // si on ne trouve rien
+            if(count($pokemonFound) === 0){
+                // on affiche la page d'erreur
                 $html = $this->renderView('page/404.html.twig');
 
                 return new Response($html, 404);
             }
         }
 
-        return $this->render('page/searchPokemon.html.twig', ['pokemon' => $pokemonFound]);
+        return $this->render('page/searchPokemon.html.twig', ['pokemons' => $pokemonFound]);
     }
 }
