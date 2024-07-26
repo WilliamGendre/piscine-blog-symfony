@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche Pokemon{% endblock %}
+
+{% block content %}
+
+    <main>
+        <section id="descriptionPokemon">
+
+            {% if pokemon %}
+                <article class="descriptionPokemonbdd">
+                    <div><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
+                    <h2>{{ pokemon.title }}</h2>
+                    <p>{{ pokemon.description }}</p>
+                </article>
+            {% endif %}
+
+        </section>
+        <h2 class="choiseStarter">Entrer le nom du Pokemon</h2>
+        <section>
+            <form method="post">
+                <label for="">
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="text" name="title">
+                </label>
+
+                <input type="submit">
+            </form>
+        </section>
+    </main>
+
+
+{% endblock %}
