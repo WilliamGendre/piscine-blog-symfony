@@ -25,7 +25,7 @@ class Pokemon
     #[ORM\Column(length: 255)]
     private ?string $type;
 
-
+// Construct pour rentrer une donnée en dur dans le controller
     public function __construct($title, $description, $image, $type)
     {
         $this->title = $title;

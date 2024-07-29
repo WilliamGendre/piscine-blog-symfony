@@ -239,6 +239,7 @@ class PokemonsController extends AbstractController{
         return $this->redirectToRoute('pokemon_bdd');
     }
 
+    // Entre une donnée dans la Bdd en dur, grâce au constructeur dans pokemon.php dans le dossier Entity
     #[Route('insert-one-pokemon', name: 'insert_pokemon')]
     public function insertPokemon(EntityManagerInterface $entityManager){
         $pokemon = new Pokemon(
