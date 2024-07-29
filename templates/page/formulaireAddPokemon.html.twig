@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Pokémon{% endblock %}
+
+{% block content %}
+
+    <main>
+
+        <h2 class="choiseStarter">Nouveau Pokémon</h2>
+        <section>
+            <form method="post" id="insertPokemon">
+                <label for="">
+                    <p>Nom</p>
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="text" name="title">
+                </label><br>
+                <label for="">
+                    <p>Descrition</p>
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="text" name="description">
+                </label><br>
+                <label for="">
+                    <p>Illustration</p>
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="text" name="image">
+                </label><br>
+                <label for="">
+                    <p>Type</p>
+                    <!-- Ne pas oublier le name, sinon sa ne marchera pas -->
+                    <input type="text" name="type">
+                </label><br>
+
+                <div><input type="submit"></div>
+            </form>
+        </section>
+        {% if pokemon %}
+            <p>{{ pokemon.title }} à bien été enregistré</p>
+        {% endif %}
+    </main>
+
+{% endblock %}

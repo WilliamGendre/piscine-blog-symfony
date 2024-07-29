@@ -332,6 +332,22 @@ form{
     font-size: 50px;
 }
 
+#insertPokemon label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#insertPokemon label p{
+    width: 120px;
+}
+
+#insertPokemon div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* -------------Footer------------- */
 
 footer{

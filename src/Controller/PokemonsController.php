@@ -241,16 +241,34 @@ class PokemonsController extends AbstractController{
 
     // Entre une donnée dans la Bdd en dur, grâce au constructeur dans pokemon.php dans le dossier Entity
     #[Route('insert-one-pokemon', name: 'insert_pokemon')]
-    public function insertPokemon(EntityManagerInterface $entityManager){
-        $pokemon = new Pokemon(
-            'tygnon',
-            "Il distribue des séries de coups de poing rapides comme l'éclair, invisibles à l'oeil nu.",
-            'https://www.pokepedia.fr/images/thumb/d/dc/Tygnon-RB.png/175px-Tygnon-RB.png',
-            'combat'
-        );
+    public function insertPokemon(EntityManagerInterface $entityManager, Request $request){
 
-        $entityManager->persist($pokemon);
-        $entityManager->flush();
-        return $this->redirectToRoute('pokemon_bdd', ['pokemon' => $pokemon]);
+        $pokemon = null;
+
+        // Si je rentre une donnée
+        if ($request->getMethod() === 'POST'){
+
+            // Je récupère les données
+            $title = $request->request->get('title');
+            $description = $request->request->get('description');
+            $image = $request->request->get('image');
+            $type = $request->request->get('type');
+
+            //j'instancie la class Pokemon
+            $pokemon = new Pokemon();
+
+            // Je passe en valeure les données rentré par l'utilisateur grâce aux fonctions setters
+            $pokemon->setTitle($title);
+            $pokemon->setDescription($description);
+            $pokemon->stImage($image);
+            $pokemon->setType($type);
+
+            // Je prépare à envoyée une nouvelle donnée
+            $entityManager->persist($pokemon);
+            // Je valide l'envoie
+            $entityManager->flush();
+        }
+        // Je retourne une réponse HTTP avec le html du formulaire
+        return $this->render('page/formulaireAddPokemon.html.twig', ['pokemon' => $pokemon]);
     }
 }
