@@ -9,7 +9,7 @@
             <article class="descriptionPokemonbdd">
                 <div><img src="{{ pokemon.image }}" alt="{{ pokemon.title }}"></div>
                 <h2>{{ pokemon.title }}</h2>
-                <p>type: {{ pokemon.type }}<br>{{ pokemon.description }}</p>
+                <p>type: {{ pokemon.type }}<br>{{ pokemon.description }}<br><a href="{{ path('update_pokemon', {id: pokemon.id}) }}">Modifier</a></p>
             </article>
         </section>
     </main>

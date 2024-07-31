@@ -315,6 +315,10 @@ class PokemonsController extends AbstractController{
             $entityManager->persist($pokemon);
             // Envoie l'update
             $entityManager->flush();
+
+            // un redirectToRoute renvoie à une page, il faut donc lui donné en paramètre le nom d'une route
+            // (et non un twig, contrairement au render)
+            return $this->redirectToRoute('pokemon_bdd_id', ['id' => $id]);
         }
 
         // Je retourne $pokemon pour l'utiliser dans le block title dans ma view
