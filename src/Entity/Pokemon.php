@@ -14,15 +14,19 @@ class Pokemon
     private ?int $id;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull()]
     private ?string $title;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull()]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull()]
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull()]
     private ?string $type;
 
 

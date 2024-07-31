@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Pokemon;
+use App\Form\PokemonType;
 use App\Repository\PokemonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -260,7 +261,7 @@ class PokemonsController extends AbstractController{
             // Je passe en valeure les données rentré par l'utilisateur grâce aux fonctions setters
             $pokemon->setTitle($title);
             $pokemon->setDescription($description);
-            $pokemon->stImage($image);
+            $pokemon->setImage($image);
             $pokemon->setType($type);
 
             // Je prépare à envoyée une nouvelle donnée
@@ -270,5 +271,53 @@ class PokemonsController extends AbstractController{
         }
         // Je retourne une réponse HTTP avec le html du formulaire
         return $this->render('page/formulaireAddPokemon.html.twig', ['pokemon' => $pokemon]);
+    }
+
+    #[Route('/pokemon_form_builder', 'pokemon_form_buider')]
+    public function insertPokemonFromBuilder(EntityManagerInterface $entityManager, Request $request)
+    {
+        // On créer une instance de classe
+        $pokemon = new Pokemon();
+
+        // permet de générer une instance de la classe de gabarit de formulaire => createForm
+        // et de la lier avec l'instance de l'entité => PokemonType::class
+        $pokemonForm = $this->createForm(PokemonType::class, $pokemon);
+        // Lie le formulaire avec la requête
+        $pokemonForm->handleRequest($request);
+
+        // Si les condition son réunis
+        if ($pokemonForm->isSubmitted() && $pokemonForm->isValid()){
+            // Je prépare à envoyée une nouvelle donnée
+            $entityManager->persist($pokemon);
+            // Je valide l'envoie
+            $entityManager->flush();
+        }
+
+        return $this->render('page/formulaireSynfony.html.twig', ['pokemonForm' => $pokemonForm->createView()]);
+    }
+
+    #[Route('/pokemons/update/{id}', name: 'update_pokemon')]
+    public function updatePokemonFromBuilder(int $id, PokemonRepository $pokemonRepository, EntityManagerInterface $entityManager, Request $request){
+
+        // Selectionne un unique pokemon grêce à son id
+        $pokemon = $pokemonRepository->find($id);
+
+        // permet de générer une instance de la classe de gabarit de formulaire => createForm
+        // et de la lier avec l'instance de l'entité => PokemonType::class
+        //createForm vient de la classe Abstrat controller
+        $pokemonUpdateForm = $this->createForm(PokemonType::class, $pokemon);
+        // lie le formulaire à la requête
+        $pokemonUpdateForm->handleRequest($request);
+
+        // Si les conditions sont réunis
+        if ($pokemonUpdateForm->isSubmitted() && $pokemonUpdateForm->isValid()){
+            // Prépare l'update
+            $entityManager->persist($pokemon);
+            // Envoie l'update
+            $entityManager->flush();
+        }
+
+        // Je retourne $pokemon pour l'utiliser dans le block title dans ma view
+        return $this->render('page/updatePokemon.html.twig', ['pokemon' => $pokemon, 'pokemonUpdateForm' => $pokemonUpdateForm->createView()]);
     }
 }

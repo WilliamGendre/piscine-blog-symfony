@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire Synfony{% endblock %}
+
+{% block content %}
+
+    {{ form(pokemonForm) }}
+
+    {% if app.request.method == 'POST' %}
+        <p>Le pokémon a bien été créer</p>
+    {% endif %}
+
+{% endblock %}
